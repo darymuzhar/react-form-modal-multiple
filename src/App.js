@@ -1,23 +1,46 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import React from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import InputForm from "./component/Form/InputForm";
+import ModalCard from "./component/Modal-Bootstrap/ModalCard";
+import { useState } from "react";
 
 function App() {
+  const [userData, setUserData] = useState([]);
+  const [modalShow, setModalShow] = useState(false);
+  const [number, setNumber] = useState(0);
+
+  const handleSubmitData = (userData) => {
+    setUserData((prevState) => {
+      return [
+        ...prevState,
+        {
+          ...userData,
+          number: String(number),
+        },
+      ];
+    });
+
+    setNumber(number + 1);
+    setModalShow(true);
+  };
+
+  const handleResetData = () => {
+    setUserData([]);
+  };
+
+  console.log(modalShow);
+  console.log(userData);
+
+  // TEst
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="mx-auto my-4 bg-light rounded-3 border p-5" style={{ width: "45%" }}>
+      <InputForm submitData={handleSubmitData} />
+      <button className="btn btn-danger w-100 mb-3" onClick={handleResetData}>
+        {" "}
+        Reset Data{" "}
+      </button>
+      {modalShow && <ModalCard user={userData} />}
     </div>
   );
 }
