@@ -25,10 +25,6 @@ function App() {
     setModalShow(true);
   };
 
-  const handleResetData = () => {
-    setUserData([]);
-  };
-
   console.log(modalShow);
   console.log(userData);
 
@@ -36,10 +32,7 @@ function App() {
   return (
     <div className="mx-auto my-4 bg-light rounded-3 border p-5" style={{ width: "45%" }}>
       <InputForm submitData={handleSubmitData} />
-      <button className="btn btn-danger w-100 mb-3" onClick={handleResetData}>
-        {" "}
-        Reset Data{" "}
-      </button>
+
       {modalShow && <ModalCard user={userData} />}
     </div>
   );

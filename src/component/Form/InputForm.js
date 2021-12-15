@@ -53,6 +53,7 @@ function InputForm(props) {
       foto: foto,
     };
     props.submitData(user);
+    console.log(user);
   }
 
   return (
@@ -61,21 +62,21 @@ function InputForm(props) {
         <h4 className="#">Isi Data Diri</h4>
         <FormGroup row>
           <Form.Label sm={4}> Nama </Form.Label>
-          <Col sm={8}>
+          <Col sm={13}>
             <Form.Control type="text" onChange={handleNama} />
             {/*<Input id="nama" name="nama" type="text" onChange={handleNama} />*/}
           </Col>
         </FormGroup>
         <FormGroup row>
           <Form.Label sm={4}>Tanggal Lahir</Form.Label>
-          <Col sm={8}>
+          <Col sm={13}>
             <Form.Control type="date" placeholder="Enter email" onChange={handleTanggalLahir} />
             {/*<Input id="pekerjaan" name="pekerjaan" type="text" onChange={handlePekerjaan} />*/}
           </Col>
         </FormGroup>
         <FormGroup row tag="fieldset">
           <legend className="col-form-label col-sm-4 text start">Jenis Kelamin</legend>
-          <Col sm={8}>
+          <Col sm={13}>
             <FormGroup check className="text-start">
               <Form.Check name="jeniskelamin" type="radio" value="laki-laki" onChange={handleJeniskelamin} />
               <Form.Label check> Laki-laki</Form.Label>
@@ -88,7 +89,7 @@ function InputForm(props) {
         </FormGroup>
         <FormGroup row>
           <Form.Label sm={4}> Agama </Form.Label>
-          <Col sm={8}>
+          <Col sm={13}>
             <Form.Select defaultValue={"DEFAULT"} id="agama" name="agama" type="select" onChange={handleAgama}>
               <option value="DEFAULT" disabled>
                 Pilih..
@@ -104,23 +105,27 @@ function InputForm(props) {
         </FormGroup>
         <FormGroup row>
           <Form.Label sm={4}>Nomor HP</Form.Label>
-          <Col sm={8}>
+          <Col sm={13}>
             <Form.Control id="nomerhp" name="nomerhp" type="number" onChange={handleNomerhp} />
           </Col>
         </FormGroup>
         <FormGroup row>
           <Form.Label sm={4}> Email </Form.Label>
-          <Col sm={8}>
+          <Col sm={13}>
             <Form.Control id="email" name="email" type="email" onChange={handleEmail} />
           </Col>
         </FormGroup>
         <FormGroup row>
           <Form.Label sm={4}>Upload Foto </Form.Label>
-          <Col sm={8}>
+          <Col sm={13}>
             <Form.Control id="foto" name="foto" type="file" onChange={handleFoto} />
           </Col>
         </FormGroup>
-        <Button color="primary w-100"> Submit </Button>
+        <FormGroup>
+          <Button color="primary w-100" type="submit" style={{ width: "510px", marginTop: "20px" }}>
+            Submit
+          </Button>
+        </FormGroup>
       </Form>
     </div>
   );
